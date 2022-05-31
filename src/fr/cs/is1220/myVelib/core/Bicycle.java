@@ -29,5 +29,28 @@ public class Bicycle {
 	public String toString() {
 		return "Bicycle [id=" + id + ", type=" + type + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		int prime = 29;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + type.hashCode();
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bicycle other = (Bicycle) obj;
+		return id == other.id && type == other.type;
+	}
+	
+	
 	
 }
