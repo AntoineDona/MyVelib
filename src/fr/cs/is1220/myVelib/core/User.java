@@ -18,7 +18,7 @@ public class User {
 	private Double creditEarned;
 	
 	
-	public User(Integer id, String name, Double x, Double y, Card card) {
+	public User(String name, Double x, Double y, Card card) {
 		super();
 		this.id = idCounter;
 		this.name = name;
@@ -34,7 +34,7 @@ public class User {
 	}
 	
 	
-	public User(Integer id, String name, Double x, Double y) {
+	public User(String name, Double x, Double y) {
 		super();
 		this.id = idCounter;
 		this.name = name;
@@ -49,7 +49,7 @@ public class User {
 	}
 
 
-	public User(Integer id, String name) {
+	public User(String name) {
 		super();
 		this.id = idCounter;
 		this.name = name;
@@ -193,7 +193,7 @@ public class User {
 				this.nbRentals ++;
 				this.totalTime += duration;
 				
-				if (station.getStationType().name() == "Plus" && this.getCard() instanceof VelibCard) {
+				if (station.getStationType().name() == "Plus" && this.getCard() instanceof VelibreCard) {
 					this.getCard().setTimeBalance(this.getCard().getTimeBalance() + 5.);
 					this.creditEarned += 5.;				
 				}
@@ -216,7 +216,7 @@ public class User {
 			}
 		}
 		
-		else if (this.getCard() instanceof VelibCard) {
+		else if (this.getCard() instanceof VelibreCard) {
 			if (this.getRentedBicycle().getType().name() == "Electrical" ) {
 				duration -= this.getCard().getTimeBalance();
 				this.getCard().setTimeBalance(0.);

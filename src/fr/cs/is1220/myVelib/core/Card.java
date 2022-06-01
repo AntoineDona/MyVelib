@@ -1,11 +1,17 @@
 package fr.cs.is1220.myVelib.core;
 
 public abstract class Card {
-	private static Integer idCounter = 0;
+	private static Integer idCounter = 1;
 	private Integer id;
 	private Double timeBalance = 0.;
 	
-	public Card(Integer id, Double timeBalance) {
+	public Card() {
+		super();
+		this.id = idCounter;
+		idCounter ++;
+	}
+
+	public Card(Double timeBalance) {
 		super();
 		this.id = idCounter;
 		this.timeBalance = timeBalance;
