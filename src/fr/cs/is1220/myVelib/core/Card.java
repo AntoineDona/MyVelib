@@ -5,12 +5,11 @@ public abstract class Card {
 	private Integer id;
 	private Double timeBalance = 0.;
 	
-	public abstract Double chargeTravel(BicycleType bicycleType, Double duration);
-
 	public Card(Integer id, Double timeBalance) {
 		super();
-		this.id = id;
+		this.id = idCounter;
 		this.timeBalance = timeBalance;
+		idCounter ++;
 	}
 
 	public Integer getId() {

@@ -12,12 +12,11 @@ public class User {
 	private Bicycle rentedBicycle;
 
 	
-	private Integer nbRentals;
+	private Integer nbRentals = 0;
 	private Double totalCharge = 0.;
 	
 	
-	public User(Integer id, String name, Double x, Double y, Card card, Integer nbRentals,
-			Double totalCharge) {
+	public User(Integer id, String name, Double x, Double y, Card card) {
 		super();
 		this.id = idCounter;
 		this.name = name;
@@ -166,7 +165,8 @@ public class User {
 				this.setRentedBicycle(null);
 				// The user drops the bike
 				
-				
+				this.totalCharge += cost;
+				this.nbRentals ++;
 			}
 		}
 	}
@@ -183,8 +183,11 @@ public class User {
 				cost = duration/60 * 2;
 			}
 		}
+		
 		else if (this.getCard() instanceof VelibCard) {
 			if (this.getRentedBicycle().getType().name() == "Electrical" ) {
+				duration -= this.getCard().getTimeBalance();
+				this.getCard().setTimeBalance(0.);
 				if (duration < 60) {
 					cost = duration/60 * 1;
 				}
@@ -200,35 +203,22 @@ public class User {
 				}
 				else {
 					duration -= this.getCard().getTimeBalance();
-					this.getCard().getTimeBalance()
+					this.getCard().setTimeBalance(0.);
 					cost = (duration-60)/60 * 1;
 				}
 			}
-		}
-		
-		
+		}	
 		
 		else if (this.getCard() instanceof VmaxCard) {
-			if (duration < 60 ) {
-				if (duration < 60) {
-					cost = duration/60 * 1;
-				}
-				else {
-					cost = 1 + (duration-60)/60 * 2;
-				}
-			}
-			
-			else if (this.getRentedBicycle().getType().name() == "Mechanical") {
-				if (duration - this.getCard().getTimeBalance() < 60) {
+			duration -= this.getCard().getTimeBalance();
+			this.getCard().setTimeBalance(0.);
+			if (duration < 60) {
 					cost = 0.;
-					this.getCard().setTimeBalance(this.getCard().getTimeBalance() - (60-duration));
-				}
-				else {
-					duration -= this.getCard().getTimeBalance();
-					cost = (duration-60)/60 * 1;
+			}
+			else {
+				cost = duration/60 * 1;
 				}
 			}
-		}
 		return cost;
 	}
 	
