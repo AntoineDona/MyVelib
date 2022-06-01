@@ -4,11 +4,15 @@ package fr.cs.is1220.myVelib.core;
 public enum StationStatus {
 	OnService,Offline;
 	
-	public static void main(String[] args) {
-		StationStatus[] enumArray = StationStatus.values();
-		for (StationStatus value : enumArray) {
-			System.out.println(value);
-		}
+	public static boolean contains(String test) {
+
+	    for (StationStatus e : StationStatus.values()) {
+	        if (e.name().equalsIgnoreCase(test)) {
+	            return true;
+	        }
+	    }
+
+	    return false;
 	}
 	
 }
