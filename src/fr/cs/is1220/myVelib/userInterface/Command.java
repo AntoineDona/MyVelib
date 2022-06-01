@@ -19,6 +19,14 @@ public class Command {
 			}
 			else if (props.size() == 6) {
 				String name = props.get(1);
+				Integer nStations = Integer.parseInt(props.get(2));
+				Integer nSlots = Integer.parseInt(props.get(3));
+				Double s = Double.parseDouble(props.get(4));
+				Integer nBikes = Integer.parseInt(props.get(5));
+				
+				net = MyVelibNetwork(name, s);
+				net.addMultipleStations(nStations, nSlots);
+				net.addMultipleBikes(nBikes);
 				
 			}
 		}
@@ -45,9 +53,34 @@ public class Command {
 			Integer userID = Integer.parseInt(props.get(1));
 			Integer stationID = Integer.parseInt(props.get(2));
 			
+			// le bon user : user.takeBicycle()
+		}
+		
+		else if(cmd.equalsIgnoreCase("returnBike")) {
+			Integer userID = Integer.parseInt(props.get(1));
+			Integer stationID = Integer.parseInt(props.get(2));
+			Double duration = Double.parseDouble(props.get(3));
+			// le bon user : user.dropBicycle
+		}
 			
-			
-	}
+		else if(cmd.equalsIgnoreCase("displayStation")) {
+			Integer stationID = Integer.parseInt(props.get(1));
+			// la bonne station : station.stats
+		}
+		
+		else if(cmd.equalsIgnoreCase("displayUser"){
+			Integer userID = Integer.parseInt(props.get(1));
+			// le bon user : user.stats
+		}
+		
+		else if(cmd.equalsIgnoreCase("sortStations")) {
+			String sortPolicy = props.get(1);
+			// Sort by
+		}
+		
+		else if(cmd.equalsIgnoreCase("display")) {
+			net.display();
+		}
 		
 	}
 }
