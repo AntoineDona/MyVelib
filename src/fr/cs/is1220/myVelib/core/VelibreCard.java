@@ -1,13 +1,14 @@
 package fr.cs.is1220.myVelib.core;
 
-public class VmaxCard extends Card {
-
-	public VmaxCard() {
+public class VelibreCard extends Card {
+	
+	public VelibreCard() {
 		super();
 	}
-	
-	public VmaxCard(Double timeBalance) {
+
+	public VelibreCard(Double timeBalance) {
 		super(timeBalance);
+		
 		// TODO Auto-generated constructor stub
 	}
 }
