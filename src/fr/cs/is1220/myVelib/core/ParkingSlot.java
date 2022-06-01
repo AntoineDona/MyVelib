@@ -60,8 +60,5 @@ public class ParkingSlot {
 			return false;
 		ParkingSlot other = (ParkingSlot) obj;
 		return Objects.equals(bicycle, other.bicycle) && Objects.equals(id, other.id) && status == other.status;
-	}
-	
-	
-		
+	}		
 }

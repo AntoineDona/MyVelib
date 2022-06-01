@@ -50,7 +50,4 @@ public class Bicycle {
 		Bicycle other = (Bicycle) obj;
 		return id == other.id && type == other.type;
 	}
-	
-	
-	
 }
