@@ -8,11 +8,19 @@ public class ParkingSlot {
 	private Bicycle bicycle;
 	private ParkingSlotStatus status;
 	
-	public ParkingSlot(Bicycle bicycle, ParkingSlotStatus status) {
+	
+	public ParkingSlot() {
+		super();
+		this.id = idCounter;
+		this.status = ParkingSlotStatus.valueOf("Free");
+		idCounter++;
+	}
+
+	public ParkingSlot(Bicycle bicycle) {
 		super();
 		this.id = idCounter;
 		this.bicycle = bicycle;
-		this.status = status;
+		this.status = ParkingSlotStatus.valueOf("Occupied");
 		idCounter++;
 	}
 	

@@ -9,7 +9,17 @@ public class ParkingSlotFactory extends AbstractFactory{
 	}
 	@Override
 	public ParkingSlot getParkingSlot(ArrayList<Object> props){
-		return null;
+		if (props == null) {
+			return null;
+		}
+		if (props.size()==0) {
+			return new ParkingSlot();
+		} else if (props.size()==1 && props.get(0) instanceof Bicycle) {
+			Bicycle bicycle = (Bicycle) props.get(0);
+			return new ParkingSlot(bicycle);
+		} else {
+			return null;
+		}
 	}
 	@Override
 	public Bicycle getBicycle(ArrayList<Object> props){
