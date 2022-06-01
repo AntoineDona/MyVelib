@@ -15,9 +15,9 @@ public class Command {
 			if (props.size() == 2) {
 				String name = props.get(1);
 				System.out.println(name);
-				net =  MyVelibNetwork(name, 4);
+				net =  new MyVelibNetwork(name, 4.0);
 			}
-			else if (prop.size() == 6) {
+			else if (props.size() == 6) {
 				String name = props.get(1);
 				
 			}
@@ -30,13 +30,13 @@ public class Command {
 		}
 		
 		else if(cmd.equalsIgnoreCase("offline")) {
-			Integer stationID = props.get(1);
-			net.offline(stationID);
+			Integer stationID = Integer.parseInt(props.get(1));
+			//net.offline(stationID);
 		}
 		
 		else if(cmd.equalsIgnoreCase("online")) {
-			Integer stationID = props.get(1);
-			net.online(stationID);
+			Integer stationID = Integer.parseInt(props.get(1));
+			//net.online(stationID);
 		}
 		
 		
