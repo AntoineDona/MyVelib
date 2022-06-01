@@ -12,6 +12,8 @@ public class Station {
 	private HashMap<Integer,ParkingSlot> parkingSlots = new HashMap<Integer,ParkingSlot>();
 	
 	
+	private Integer rentOperations = 0;
+	private Integer returnOperations = 0;
 	
 	public Station(StationType stationType) {
 		super();
@@ -92,7 +94,23 @@ public class Station {
 	public void setParkingSlots(HashMap<Integer, ParkingSlot> parkingSlots) {
 		this.parkingSlots = parkingSlots;
 	}
-
+	
+	public Integer getRentOperations() {
+		return this.rentOperations;
+	}
+	
+	public void setRentOperations(Integer rentOperations) {
+		this.rentOperations = rentOperations;
+	}
+	
+	public Integer getReturnOperations() {
+		return this.returnOperations;
+	}
+	
+	public void setReturnOperations(Integer returnOperations) {
+		this.returnOperations = returnOperations;
+	}
+	
 	@Override
 	public String toString() {
 		return "Station [id=" + id + ", x=" + x + ", y=" + y + ", stationStatus=" + stationStatus + ", stationType="

@@ -12,8 +12,10 @@ public class User {
 	private Bicycle rentedBicycle;
 
 	
-	private Integer nbRentals = 0;
-	private Double totalCharge = 0.;
+	private Integer nbRentals;
+	private Double totalCharge;
+	private Double totalTime;
+	private Double creditEarned;
 	
 	
 	public User(Integer id, String name, Double x, Double y, Card card) {
@@ -23,9 +25,12 @@ public class User {
 		this.x = x;
 		this.y = y;
 		this.card = card;
-		this.nbRentals = nbRentals;
-		this.totalCharge = totalCharge;
 		idCounter ++;
+		
+		this.nbRentals = 0;
+		this.totalCharge = 0.;
+		this.totalTime = 0.;
+		this.creditEarned = 0.;
 	}
 	
 	
@@ -36,6 +41,11 @@ public class User {
 		this.x = x;
 		this.y = y;
 		idCounter ++;
+		
+		this.nbRentals = 0;
+		this.totalCharge = 0.;
+		this.totalTime = 0.;
+		this.creditEarned = 0.;
 	}
 
 
@@ -44,6 +54,11 @@ public class User {
 		this.id = idCounter;
 		this.name = name;
 		idCounter ++;
+		
+		this.nbRentals = 0;
+		this.totalCharge = 0.;
+		this.totalTime = 0.;
+		this.creditEarned = 0.;
 	}
 
 
@@ -124,11 +139,18 @@ public class User {
 		this.rentedBicycle = rentedBicycle;
 	}
 
+	public void setTotalTime(Double totalTime) {
+		this.totalTime = totalTime;
+	}
+	
+	public Double getTotalTime() {
+		return this.totalTime;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", x=" + x + ", y=" + y + ", card=" + card
-				 + ", nbRentals=" + nbRentals + ", totalCharge=" + totalCharge + "]";
+				 + ", nbRentals=" + nbRentals + ", totalCharge=" + totalCharge + ", totalTime=" + totalTime + "]";
 	}
 	
 	
@@ -144,6 +166,8 @@ public class User {
 				parkingSlot.setStatus("Free");
 				parkingSlot.setBicycle(null);
 				// The bicycle is deleted from the station
+				
+				station.setRentOperations(station.getRentOperations() + 1) ;
 			}
 		}
 		
@@ -167,7 +191,15 @@ public class User {
 				
 				this.totalCharge += cost;
 				this.nbRentals ++;
-			}
+				this.totalTime += duration;
+				
+				if (station.getStationType().name() == "Plus" && this.getCard() instanceof VelibCard) {
+					this.getCard().setTimeBalance(this.getCard().getTimeBalance() + 5.);
+					this.creditEarned += 5.;				
+				}
+				
+				station.setRentOperations(station.getRentOperations() + 1) ;
+				station.setReturnOperations(station.getReturnOperations() + 1) ;			}
 		}
 	}
 	
@@ -210,8 +242,6 @@ public class User {
 		}	
 		
 		else if (this.getCard() instanceof VmaxCard) {
-			duration -= this.getCard().getTimeBalance();
-			this.getCard().setTimeBalance(0.);
 			if (duration < 60) {
 					cost = 0.;
 			}
