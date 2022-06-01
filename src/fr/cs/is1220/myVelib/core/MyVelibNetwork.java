@@ -2,10 +2,17 @@ package fr.cs.is1220.myVelib.core;
 
 import java.util.*;
 
+
 public class MyVelibNetwork {
 	private ArrayList<Station> stations;
 	private ArrayList<User> users;
 	private ArrayList<Bicycle> bicycles;
+	
+	private static AbstractFactory stationFactory = new StationFactory();
+	private static AbstractFactory parkingSlotFactory = new ParkingSlotFactory();
+	private static AbstractFactory userFactory = new UserFactory();
+	private static AbstractFactory cardFactory = new CardFactory();
+	private static AbstractFactory bicycleFactory = new BicycleFactory();
 	
 	public MyVelibNetwork(ArrayList<Station> stations, ArrayList<User> users, ArrayList<Bicycle> bicycles) {
 		super();
