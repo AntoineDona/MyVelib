@@ -24,7 +24,7 @@ public class Command {
 				Double s = Double.parseDouble(props.get(4));
 				Integer nBikes = Integer.parseInt(props.get(5));
 				
-				net = MyVelivNetwork(name, s);
+				net = MyVelibNetwork(name, s);
 				net.addMultipleStations(nStations, nSlots);
 				net.addMultipleBikes(nBikes);
 				
