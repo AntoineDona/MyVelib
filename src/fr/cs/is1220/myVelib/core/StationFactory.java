@@ -9,9 +9,9 @@ public class StationFactory extends AbstractFactory {
 		if (props == null) {
 			return null;
 		} 
-		if (props.size() > 0 && props.get(0) instanceof StationType) { 		
+		if (props.size() > 0 && StationType.contains((String) props.get(0))) { 		
 			//Si le 1e paramètre est bien de type Enum StationType
-			StationType stationType = (StationType)props.get(0);
+			StationType stationType = StationType.valueOf((String) props.get(0));
 			
 			if(props.size() ==1 ) { 			
 				//Si c'est l'unique paramètre
