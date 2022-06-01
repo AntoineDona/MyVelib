@@ -1,5 +1,7 @@
 package fr.cs.is1220.myVelib.core;
 
+import java.util.Objects;
+
 public class ParkingSlot {
 	private static Integer idCounter = 1;
 	private Integer id;
@@ -37,5 +39,29 @@ public class ParkingSlot {
 	public String toString() {
 		return "ParkingSlot [id=" + id + ", bicycle=" + bicycle + ", status=" + status + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		int prime = 29;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + (bicycle == null ? 0 :  bicycle.hashCode());
+		result = prime * result + status.hashCode();
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ParkingSlot other = (ParkingSlot) obj;
+		return Objects.equals(bicycle, other.bicycle) && Objects.equals(id, other.id) && status == other.status;
+	}
+	
+	
 		
 }
