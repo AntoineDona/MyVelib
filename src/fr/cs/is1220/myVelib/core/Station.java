@@ -23,5 +23,60 @@ public class Station {
 		
 		idCounter++;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public void setY(double y) {
+		this.y = y;
+	}
+
+	public StationStatus getStationStatus() {
+		return stationStatus;
+	}
+
+	public void setStationStatus(StationStatus stationStatus) {
+		this.stationStatus = stationStatus;
+	}
+
+	public StationType getStationType() {
+		return stationType;
+	}
+
+	public void setStationType(String stationType) {
+		this.stationType = StationType.valueOf(stationType);
+	}
+
+	public HashMap<Integer, ParkingSlot> getParkingSlots() {
+		return parkingSlots;
+	}
+
+	public void setParkingSlots(HashMap<Integer, ParkingSlot> parkingSlots) {
+		this.parkingSlots = parkingSlots;
+	}
+
+	@Override
+	public String toString() {
+		return "Station [id=" + id + ", x=" + x + ", y=" + y + ", stationStatus=" + stationStatus + ", stationType="
+				+ stationType + ", parkingSlots=" + parkingSlots + "]";
+	}
+	
 	
 }

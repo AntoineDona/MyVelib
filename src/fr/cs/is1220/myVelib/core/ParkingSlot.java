@@ -31,8 +31,8 @@ public class ParkingSlot {
 	public ParkingSlotStatus getStatus() {
 		return status;
 	}
-	public void setStatus(ParkingSlotStatus status) {
-		this.status = status;
+	public void setStatus(String status) {
+		this.status = ParkingSlotStatus.valueOf(status);
 	}
 	
 	@Override
